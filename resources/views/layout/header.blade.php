@@ -9,11 +9,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Manajemen Data Buku</h1>
+        <h1 style="text-align: center;">Manajemen Data Buku</h1>
+        @if (Auth::check())
+    <div style="text-align: center; margin-bottom:10px;">
+            <p style="margin-bottom:8px;">Selamat datang, <strong>{{ Auth::user()->name }}</strong>!</p>
+            <form action="{{ route('logoutProses') }}" method="POST"> 
+                @csrf
+                <button type="submit" class="tombol">Logout</button>
+            </form>
+        @endif
         <div class="nav">
             <ul>
                 <li><a href="/kategori">Kategori</a></li>
                 <li><a href="/penerbit">Penerbit</a></li>
                 <li><a href="/buku">Buku</a></li>
             </ul>
-        </div>
+     </div>
+    </div>

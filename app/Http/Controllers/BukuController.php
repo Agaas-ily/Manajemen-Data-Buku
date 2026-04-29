@@ -40,8 +40,17 @@ class BukuController extends Controller
             'tahun_terbit' => 'required|integer:4',
             'kategori_id' => 'required',
             'penerbit_id' => 'required',
+            'file_cover' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
         ]);
 
+        // upload file cover jika ada
+        if ($request->hasFile('file_cover')) {
+            $validatedData ['cover']= $request->file('file_cover')->store('cover', 'public');
+
+        // hapus path 'public/' dari hasil penyimpanan file
+        unset($validatedData['file_cover']);
+
+        }
         // Simpan data ke database
         Buku::create($validatedData);
 
