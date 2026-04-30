@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($allbuku as $key => $r)
+            @foreach($allBuku as $key => $r)
             <tr>
                 <td style="text-align: center">{{ $key + 1 }}</td>
                 <td><img src="{{ asset('storage/' . $r->cover) }}" alt="Cover Buku" width="200"></td>
@@ -39,4 +39,7 @@
             @endforeach
         </tbody>
     </table>
+    <div style="margin-bottom: 10px;">
+        {{ $allBuku->links('vendor.buatanku') }}
+    </div>
 @include('layout.footer')
