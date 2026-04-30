@@ -7,18 +7,20 @@
         <thead>
             <tr>
                 <th style="text-align: center">No</th>
+                <th style="text-align: center">Cover</th>
                 <th style="text-align: center">Judul Buku</th>
                 <th style="text-align: center">Pengarang</th>
                 <th style="text-align: center">Penerbit</th>
                 <th style="text-align: center">Tahun Terbit</th>
                 <th style="text-align: center">Kategori</th>
-                <th style="text-align: center">Aksi</th>
+                <th style="text-align: center" width="200">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @foreach($allbuku as $key => $r)
             <tr>
                 <td style="text-align: center">{{ $key + 1 }}</td>
+                <td><img src="{{ asset('storage/' . $r->cover) }}" alt="Cover Buku" width="200"></td>
                 <td style="text-align: center">{{ $r->judul }}</td> 
                 <td style="text-align: center">{{ $r->pengarang }}</td>
                 <td style="text-align: center">{{ $r->penerbit->nama_penerbit }}</td>

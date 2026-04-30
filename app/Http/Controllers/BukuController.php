@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
-use App\Models\Kategori;
 use App\Models\Penerbit;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BukuController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $allbuku   = Buku::all();
+        $allbuku = Buku::all();
         return view('buku.index', compact('allbuku'));
     }
 
@@ -25,7 +26,7 @@ class BukuController extends Controller
     {
         $penerbit = Penerbit::all();
         $kategori = Kategori::all();
-        return view('buku.create', compact('penerbit','kategori'));
+        return view('buku.create', compact('penerbit', 'kategori'));
     }
 
     /**
@@ -33,28 +34,28 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi data 
+        // Validasi data
         $validatedData = $request->validate([
-            'judul' => 'required|max:255',
-            'pengarang' => 'required|max:100',
+            'judul'        => 'required|max:255',
+            'pengarang'    => 'required|max:100',
             'tahun_terbit' => 'required|integer:4',
-            'kategori_id' => 'required',
-            'penerbit_id' => 'required',
-            'file_cover' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
+            'kategori_id'  => 'required',
+            'penerbit_id'  => 'required',
+            'file_cover'   => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        // upload file cover jika ada
+        // Upload file cover jika ada
         if ($request->hasFile('file_cover')) {
-            $validatedData ['cover']= $request->file('file_cover')->store('cover', 'public');
+            $validatedData['cover'] = $request->file('file_cover')->store('cover', 'public');
+        }
 
-        // hapus path 'public/' dari hasil penyimpanan file
+        // Hapus key file_cover dari validated data
         unset($validatedData['file_cover']);
 
-        }
         // Simpan data ke database
         Buku::create($validatedData);
 
-        // Redirect ke halaman index dengan pesan sukses
+        // Redirect ke halaman index
         return redirect()->route('buku.index');
     }
 
@@ -81,19 +82,33 @@ class BukuController extends Controller
      */
     public function update(Request $request, Buku $buku)
     {
-         // Validasi data 
+        // Validasi data
         $validatedData = $request->validate([
-            'judul' => 'required|max:255',
-            'pengarang' => 'required|max:100',
+            'judul'        => 'required|max:255',
+            'pengarang'    => 'required|max:100',
             'tahun_terbit' => 'required|integer:4',
-            'kategori_id' => 'required',
-            'penerbit_id' => 'required',
+            'kategori_id'  => 'required',
+            'penerbit_id'  => 'required',
+            'file_cover'   => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        // Upload file cover jika ada
+        if ($request->hasFile('file_cover')) {
+            $validatedData['cover'] = $request->file('file_cover')->store('cover', 'public');
+
+            // Hapus file cover lama jika ada
+            if ($request->input('cover_lama')) {
+                Storage::delete('public/' . $request->input('cover_lama'));
+            }
+        }
+
+        // Hapus key file_cover dari validated data
+        unset($validatedData['file_cover']);
 
         // Update data ke database
         $buku->update($validatedData);
 
-        // Redirect ke halaman index dengan pesan sukses
+        // Redirect ke halaman index
         return redirect()->route('buku.index');
     }
 
@@ -102,9 +117,15 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
+        // Hapus file cover jika ada
+        if ($buku->cover && Storage::exists('public/' . $buku->cover)) {
+            Storage::delete('public/' . $buku->cover);
+        }
+
         // Hapus data dari database
         $buku->delete();
-        // Redirect ke halaman index dengan pesan sukses
+
+        // Redirect ke halaman index
         return redirect()->route('buku.index');
     }
 }
