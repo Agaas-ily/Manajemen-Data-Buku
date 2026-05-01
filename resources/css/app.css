@@ -9,3 +9,31 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.table_1 {
+    @apply table-auto w-full mt-4 border-collapse border border-gray-300;
+}
+.judul_h3 {
+    @apply font-bold mb-4 border-b pb-3 text-xl" text-center;
+}
+.custom_th{
+    @apply border border-gray-300 px-4 py-2 bg-gray-200 text-center;
+}
+
+.custom_td {
+    @apply border border-gray-300 px-4 py-2 text-center;
+}
+
+.tombol_hijau{
+    @apply bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded;
+}
+
+.tombol_biru{
+    @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded;
+}
+.tombol_kuning{
+    @apply bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded;
+}
+.tombol_merah{
+    @apply bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded;
+}

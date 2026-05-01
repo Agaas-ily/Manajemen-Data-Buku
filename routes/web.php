@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('Dashboard');
 
 Route::resource('kategori', App\Http\Controllers\KategoriController::class) ->middleware('auth');
 Route::resource('penerbit', App\Http\Controllers\PenerbitController::class) ->middleware('auth');
@@ -17,3 +17,8 @@ Route::resource('buku', App\Http\Controllers\BukuController::class) ->middleware
 Route::get('/login', [App\Http\Controllers\AuthManualController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthManualController::class, 'loginProses'])->name('loginProses');
 Route::post('/logout', [App\Http\Controllers\AuthManualController::class, 'logout'])->name('logoutProses');
+
+//route untuk tes
+Route::get('/tes', function () {
+    return view('tes');
+});

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Aplikasi Manajemen Data Buku</title>
+    <title>Aplikasi Data Buku</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
     @vite('resources/css/app.css')
 </head>
@@ -15,7 +15,7 @@
             <div class="p-4 text-center text-lg font-bold bg-gray-900">
                 Panel Admin
             </div>
-            <nav class="flex-">
+            <nav class="flex-1">
                 <ul class="space-y-2 p-4">
                     <li>
                         <a href="{{ route('Dashboard') }}" class="flex items-center p-2 rounded
@@ -59,9 +59,9 @@
                      @endif
             </aside>
  {{-- header Content --}}
-<div class="flex-1 flex flex-col shadow">
-    <header class="bg-white shadow flex items-center justify-between p-4  "> 
-        <h2 class="text-xl font-bold">Dashboard</h2>
+<div class="flex-1 flex flex-col">
+    <header class="bg-white shadow flex items-center justify-between p-4 "> 
+        <h1 class="text-xl font-bold">Dashboard</h1>
         <div class="flex items-center space-x-4">
             <div class="relative group">
                 <button class="flex items-center focus:outline-none ">
@@ -85,3 +85,12 @@
     <main class="flex-1 p-6 bg-gray-50">
                 <main class="flex-1 p-6">
                     <div class="bg-white rounded-lg shadow p-6 w-full">
+                        <h2 class="text-2xl font-bold mb-4">Selamat Datang di Dashboard</h2>
+                        <p class="text-gray-700">Ini adalah halaman dashboard untuk aplikasi manajemen data buku. Di sini Anda dapat mengelola kategori, penerbit, dan buku dengan mudah.</p>
+                    </div>
+                    </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
