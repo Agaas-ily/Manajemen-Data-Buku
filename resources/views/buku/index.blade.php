@@ -1,8 +1,13 @@
 @include('layout.header')
     <h3 style="text-align: center;">Daftar Buku</h3>
-    <div style="text-align: center;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items:center;">
         <a href ="{{ route('buku.create') }}" class="tombol">Tambah Buku</a>
+        <form action="{{ route('buku.index') }}" method="get">
+            <input type="text" name="q" id="" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Pengarang\Penerbit\Tahun\Buku...">
+            <button type="submit" class="tombol">Cari</button>
+        </form>
     </div>
+    
     <table>
         <thead>
             <tr>
@@ -19,7 +24,7 @@
         <tbody>
             @foreach($allBuku as $key => $r)
             <tr>
-                <td style="text-align: center">{{ $key + 1 }}</td>
+                <td style="text-align: center">{{ $key + $allBuku->firstItem() }}</td>
                 <td><img src="{{ asset('storage/' . $r->cover) }}" alt="Cover Buku" width="200"></td>
                 <td style="text-align: center">{{ $r->judul }}</td> 
                 <td style="text-align: center">{{ $r->pengarang }}</td>

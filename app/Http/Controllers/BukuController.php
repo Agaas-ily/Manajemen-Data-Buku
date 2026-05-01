@@ -13,10 +13,20 @@ class BukuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Buku::query();
+
+        // Jika ada parameter pencarian, tambahkan kondisi pencarian
+        if ($request->has('q')) {
+            $allBuku = Buku::when($request->input('q'), function ($queryBuilder, $query) {
+                $queryBuilder->where('judul', 'like', '%'. $query.'%');
+                $queryBuilder->orWhere('pengarang', 'like', '%'. $query.'%');
+            })->paginate(10);
+        }else{
+            $allBuku = Buku::latest()->paginate(10);
+        }
        // $allbuku = Buku::all();
-       $allBuku = Buku::latest()->paginate(10);
         return view('buku.index', compact('allBuku'));
     }
 

@@ -37,22 +37,26 @@ body, h1, p, table, th, td, input, button {
 
   /* Navigation Styling */
 .nav {
-    margin-bottom: 20px;
-    border-top: 1px solid #ebebeb;
-    border-bottom: 1px solid #ebebeb;
-    /* border-radius: 5px; */
-    padding: 0px 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  padding: 100px 0;
+  align-items: center;
+
 }
 
 .nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px; /* Spacing between menu items */
+    gap: 15px;
+    margin: 10px 0;
+    padding: 0px 0;
 }
 
 .nav ul li {
-    display: inline;
+    /* display: inline; */
 }
 
 .nav ul li a {
