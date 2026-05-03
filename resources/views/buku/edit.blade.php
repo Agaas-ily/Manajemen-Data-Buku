@@ -12,7 +12,7 @@
             <input type="text" name="pengarang" id="pengarang" value="{{ $buku->pengarang }}" class="border border-gray-300 rounded py-2 px-4">
         </div>
         <div class="mb-4">
-            <label for="tahun_terbit" class="block text-gray-700 font-bold mb-2">Tahun TTerbit</label>
+            <label for="tahun_terbit" class="block text-gray-700 font-bold mb-2">Tahun Terbit</label>
             <input type="text" name="tahun_terbit" id="tahun_terbit" value="{{ $buku->tahun_terbit }}" class="border border-gray-300 rounded py-2 px-4">
         </div>
         <div class="mb-4">

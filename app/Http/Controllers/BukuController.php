@@ -49,8 +49,8 @@ class BukuController extends Controller
         $validatedData = $request->validate([
             'judul'        => 'required|max:255',
             'pengarang'    => 'required|max:100',
-            'tahun_terbit' => 'required|integer:4',
-            'kategori_id'  => 'required',
+            'tahun_terbit' => 'required|integer|digits:4',
+            'kategori_id'  => 'required',   
             'penerbit_id'  => 'required',
             'file_cover'   => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);

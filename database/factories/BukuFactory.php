@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Buku;
+use App\Models\Kategori;
+use App\Models\Penerbit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,10 +24,8 @@ class BukuFactory extends Factory
             'pengarang' => $this->faker->name(),
             'cover' => '',
             'tahun_terbit' => $this->faker->year,
-            'kategori_id' => $this->faker->numberBetween(1,3),
-            'penerbit_id' => $this->faker->numberBetween(1,3),
-
-
+            'kategori_id' => Kategori::inRandomOrder()->value('id'),
+            'penerbit_id' => Penerbit::inRandomOrder()->value('id'),
         ];
     }
 }

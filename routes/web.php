@@ -12,6 +12,8 @@ Route::get('/', function () {
 Route::resource('kategori', App\Http\Controllers\KategoriController::class) ->middleware('auth');
 Route::resource('penerbit', App\Http\Controllers\PenerbitController::class) ->middleware('auth');
 Route::resource('buku', App\Http\Controllers\BukuController::class) ->middleware('auth');
+Route::resource('anggota', App\Http\Controllers\AnggotaController::class) ->middleware('auth') ->parameters(['anggota' => 'anggota']);
+Route::resource('peminjaman', App\Http\Controllers\PeminjamanController::class) ->middleware('auth');
 
 //route untuk login dan logout  
 Route::get('/login', [App\Http\Controllers\AuthManualController::class, 'index'])->name('login');
