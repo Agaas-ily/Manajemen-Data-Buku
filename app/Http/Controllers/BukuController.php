@@ -67,6 +67,7 @@ class BukuController extends Controller
         Buku::create($validatedData);
 
         // Redirect ke halaman index
+        toast('Buku berhasil ditambahkan','success');
         return redirect()->route('buku.index');
     }
 
@@ -120,6 +121,7 @@ class BukuController extends Controller
         $buku->update($validatedData);
 
         // Redirect ke halaman index
+        toast('Buku berhasil diperbarui','success');
         return redirect()->route('buku.index');
     }
 
@@ -137,6 +139,7 @@ class BukuController extends Controller
         $buku->delete();
 
         // Redirect ke halaman index
+        toast('Buku berhasil dihapus','success');
         return redirect()->route('buku.index');
     }
 }

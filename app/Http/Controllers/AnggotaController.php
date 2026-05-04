@@ -37,7 +37,8 @@ class AnggotaController extends Controller
 
         Anggota::create($request->all());
 
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil ditambahkan.'); 
+        toast('Anggota berhasil ditambahkan','success');
+        return redirect()->route('anggota.index');
     }
 
     /**
@@ -69,7 +70,8 @@ class AnggotaController extends Controller
 
         $anggota->update($request->all());
 
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil diperbarui.');
+        toast('Anggota berhasil diperbarui','success');
+        return redirect()->route('anggota.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class AnggotaController extends Controller
     {
         $anggota->delete();
 
-        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil dihapus.');
+        toast('Anggota berhasil dihapus','success');
+        return redirect()->route('anggota.index');
     }
 }

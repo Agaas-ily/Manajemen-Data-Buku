@@ -45,7 +45,8 @@ class PeminjamanController extends Controller
            
         ]);
         $peminjaman->bukus()->attach($request->buku_ids);
-        return redirect()->route('peminjaman.index')->with('success', 'Peminjaman berhasil ditambahkan.');
+        toast('Peminjaman berhasil ditambahkan','success');
+        return redirect()->route('peminjaman.index');
     }
 
     /**
@@ -76,8 +77,8 @@ class PeminjamanController extends Controller
             'tanggal_kembali' => $request->tanggal_kembali,
             'status' => 'dikembalikan',
         ]);
-
-        return redirect()->route('peminjaman.index')->with('success', 'Peminjaman berhasil diperbarui.');
+        toast('Peminjaman berhasil diperbarui','success');
+        return redirect()->route('peminjaman.index');
     }
 
     /**
@@ -87,6 +88,7 @@ class PeminjamanController extends Controller
     {
         $peminjaman->bukus()->detach();
         $peminjaman->delete();
-        return redirect()->route('peminjaman.index')->with('success', 'Peminjaman berhasil dihapus.');
+        toast('Peminjaman berhasil dihapus','success');
+        return redirect()->route('peminjaman.index');
     }
 }

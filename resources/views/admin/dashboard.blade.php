@@ -79,7 +79,7 @@
         <div class="flex items-center space-x-4">
             <div class="relative group">
                 <button class="flex items-center focus:outline-none ">
-                      <div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden ring-2 ring-gray-200 group-hover:ring-indigo-400">
+                     <div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden ring-2 ring-gray-200 group-hover:ring-indigo-400">
                   <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF" alt="Profil">
                    </div>
                     <span class="ml-3 text-gray-700 font-semibold group-hover:text-indigo-600 transition-colors">{{ Auth::user()->name }}</span>

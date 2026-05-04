@@ -17,11 +17,19 @@ class AuthManualController extends Controller
             [
                 'email' => 'required|email',
                 'password' => 'required',
+            ],
+            [
+                'email.required' => 'Email wajib diisi',
+                'email.email' => 'Format email tidak valid',
+                'password.required' => 'Password wajib diisi',
             ]);
             if (Auth::attempt($credintials)) {
                 $request->session()->regenerate();
-                return redirect()->route('kategori.index');
+                toast('Login berhasil.','success');
+                return redirect()->route('dashboard');
             }
+
+    toast('Login gagal. Silakan coba lagi.','error');
             return back();
     }
 
@@ -30,6 +38,7 @@ class AuthManualController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        toast('Anda telah logout.','success');
         return redirect()->route('login');
     }
 }

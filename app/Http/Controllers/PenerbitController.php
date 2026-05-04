@@ -21,6 +21,7 @@ class PenerbitController extends Controller
      */
     public function create()
     {
+        toast('Penerbit berhasil ditambahkan','success');
         return view('penerbit.create');
     }
 
@@ -71,6 +72,7 @@ class PenerbitController extends Controller
         $penerbit->update($validatedData);
 
         // Redirect ke halaman index dengan pesan sukses
+        toast('Penerbit berhasil diperbarui','success');
         return redirect()->route('penerbit.index');
     }
 
@@ -81,6 +83,7 @@ class PenerbitController extends Controller
     {
         // Hapus data dari database
         $penerbit->delete();
+        toast('Penerbit berhasil dihapus','success');
         // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('penerbit.index');
     }

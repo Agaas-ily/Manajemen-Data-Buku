@@ -5,9 +5,9 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenerbitController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('Dashboard');
+Route::middleware('auth')->get('/', function () {
+    return view('admin.dashboard');
+})->name('dashboard');
 
 Route::resource('kategori', App\Http\Controllers\KategoriController::class) ->middleware('auth');
 Route::resource('penerbit', App\Http\Controllers\PenerbitController::class) ->middleware('auth');

@@ -38,6 +38,7 @@ class KategoriController extends Controller
         Kategori::create($validatedData);
 
         // Redirect ke halaman index dengan pesan sukses
+        toast('Kategori berhasil ditambahkan','success');
         return redirect()->route('kategori.index');
     }
 
@@ -71,6 +72,7 @@ class KategoriController extends Controller
         $kategori->update($validatedData);
 
         // Redirect ke halaman index dengan pesan sukses
+        toast('Kategori berhasil diperbarui','success');
         return redirect()->route('kategori.index');
     }
 
@@ -82,6 +84,7 @@ class KategoriController extends Controller
         // Hapus data dari database
         $kategori->delete();
         // Redirect ke halaman index dengan pesan sukses
+        toast('Kategori berhasil dihapus','success');
         return redirect()->route('kategori.index');
     }
 }

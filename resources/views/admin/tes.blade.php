@@ -18,7 +18,7 @@
             <nav class="flex-1">
                 <ul class="space-y-2 p-4">
                     <li>
-                        <a href="{{ route('Dashboard') }}" class="flex items-center p-2 rounded
+                        <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded
                              hover:bg-gray-700">
                             <span class="material-icons">dashboard</span>
                             <span class="ml-2">Dashboard</span>
@@ -61,15 +61,17 @@
  {{-- header Content --}}
 <div class="flex-1 flex flex-col">
     <header class="bg-white shadow flex items-center justify-between p-4 "> 
-        <h1 class="text-xl font-bold">Dashboard</h1>
+        <h1 class="text-4xl px-7 font-bold">Dashboard</h1>
         <div class="flex items-center space-x-4">
             <div class="relative group">
                 <button class="flex items-center focus:outline-none ">
-                    <img src="https://placehold.co/40" alt="Profil" class="w-10 h-10 rounded-full border border-gray-200">
-                    <span class="ml-2 text-gray-700 font-medium">{{ Auth::user()->name }}</span>
-                    <svg class="w-4 h-4 ml-1 text-gray-500 group-hover:text-gray-800 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                {{-- Dropdown Menu --}}
+                   <div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden ring-2 ring-gray-200 group-hover:ring-indigo-400">
+                  <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF" alt="Profil">
+                   </div>
+                    <span class="ml-3 text-gray-700 font-semibold group-hover:text-indigo-600 transition-colors">{{ Auth::user()->name }}</span>
+                        <svg class="w-4 h-4 ml-1 text-gray-400 group-hover:text-indigo-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
                 <div class="absolute right-0 mt-3 w-48 bg-white border border-gray-200 rounded-md shadow-xl transition-all duration-300 ease-in-out opacity-0 translate-y-2 hidden group-hover:block group-hover:opacity-100 group-hover:translate-y-0">
                     <div class="py-1"> {{-- Beri padding dalam sedikit agar rapi --}}
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150">Profil</a>
