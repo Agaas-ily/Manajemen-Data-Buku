@@ -5,7 +5,7 @@
     </div>
     <table class="table_1">
         <thead>
-            <tr class="bg-gray-200">
+            <tr class="bg-blue-200">
                 <th class="custom_th">No</th>
                 <th class="custom_th">Nama Anggota</th>
                 <th class="custom_th">Alamat</th>

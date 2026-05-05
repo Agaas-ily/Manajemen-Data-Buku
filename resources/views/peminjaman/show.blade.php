@@ -1,9 +1,9 @@
 @include('layout.header')
 <div class="flex items-center justify-between">
     <h3 class="font-bold mb-1 pb-3 text-xl" style="text-align: center;">Detail Peminjaman</h3>
-    <a href="{{ route('peminjaman.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Kembali</a>
+    <a href="{{ route('peminjaman.index') }}" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded">Kembali</a>
 </div>
-<div class="mb-4  pa-4  bg-gray-100">
+<div class="mb-4  pa-4  bg-emerald-100">
     <p><strong>Tanggal Peminjaman:</strong> {{ $peminjaman->tanggal_pinjam }}</p>
     <p><strong>Nama Anggota:</strong> {{ $peminjaman->anggota->nama_anggota }}</p>
     <p><strong>Status Pengembalian:</strong> {{ $peminjaman->status }}</p>
@@ -11,7 +11,7 @@
 <div class="overflow-x-auto">
     <table class="table_1">
         <thead>
-            <tr clas=s="bg-gray-200">
+            <tr class="bg-emerald-200">
                 <th class="px-4 py-2">No.</th>
                 <th class="px-4 py-2">Judul Buku</th>
                 <th class="px-4 py-2">Pengarang</th>

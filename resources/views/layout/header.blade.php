@@ -11,49 +11,50 @@
 <body class="bg-gray-100">
     <div class="flex h-screen">
         {{-- Sidebar --}}
-        <aside class="w-64 bg-gray-800 text-white flex flex-col">
-            <div class="p-4 text-center text-lg font-bold bg-gray-900">
+        <aside class="w-64 bg-emerald-400 text-white flex flex-col">
+            <div class="p-4 text-center text-lg font-bold bg-emerald-900">
                 Panel Admin
             </div>
             <nav class="flex-">
                 <ul class="space-y-2 p-4">
                     <li>
                         <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded
-                             hover:bg-gray-700">
+                             hover:bg-emerald-600">
                             <span class="material-icons">dashboard</span>
                             <span class="ml-2">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('kategori.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-gray-700">
+                             hover:bg-emerald-600">
                             <span class="material-icons">folder</span>
                             <span class="ml-2">Kategori</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('penerbit.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-gray-700">
+                             hover:bg-emerald-600">
                             <span class="material-icons">book</span>
                             <span class="ml-2">Penerbit</span>
                         </a>
+                    </li>
                     <li>
                         <a href="{{ route('buku.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-gray-700">
+                             hover:bg-emerald-600">
                             <span class="material-icons">library_books</span>
                             <span class="ml-2">Buku</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('anggota.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-gray-700">
+                             hover:bg-emerald-600">
                             <span class="material-icons">people</span>
                             <span class="ml-2">Anggota</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('peminjaman.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-gray-700">
+                             hover:bg-emerald-600">
                             <span class="material-icons">library_books</span>
                             <span class="ml-2">Peminjaman</span>
                         </a>
@@ -75,7 +76,7 @@
  {{-- header Content --}}
 <div class="flex-1 flex flex-col shadow">
     <header class="bg-white-1500 shadow-md flex items-center justify-between p-4  "> 
-        <h1 class="text-4xl font-bold  px-8 " >Dashboard</h1>
+        <h1 class="text-2xl font-bold  px-8 " >Aplikasi Manajemen Data Buku</h1>
         <div class="flex items-center space-x-4">
             <div class="relative group">
                 <button class="flex items-center focus:outline-none ">

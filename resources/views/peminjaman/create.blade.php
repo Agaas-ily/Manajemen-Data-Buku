@@ -3,11 +3,11 @@
 <form action="{{route('peminjaman.store')}}" method="POST">
     @csrf
     <div class="mb-4">
-        <label for="" class="block text-gray-700 font-bold mb-2">Tanggal Peminjaman</label>
+        <label for="" class="block text-emerald-700 font-bold mb-2">Tanggal Peminjaman</label>
         <input type="date" name="tanggal_pinjam" class="border border-gray-300 rounded py-2 px-4" value="{{ date('Y-m-d') }}" >
     </div>
     <div class="mb-4">
-        <label for="" class="block text-gray-700 font-bold mb-2">Nama Anggota</label>
+        <label for="" class="block text-emerald-700 font-bold mb-2">Nama Anggota</label>
         <select name="anggota_id" id="" class="border border-gray-300 rounded py-2 px-4">
             @foreach ($anggota as $a)
                 <option value="{{ $a->id }}">{{ $a->nama_anggota }}</option>
