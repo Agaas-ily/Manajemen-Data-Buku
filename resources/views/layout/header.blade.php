@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aplikasi Manajemen Data Buku</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen">
         {{-- Sidebar --}}
         <aside class="w-64 bg-emerald-400 text-white flex flex-col">
-            <div class="p-4 text-center text-lg font-bold bg-emerald-900">
+            <div class="p-4 text-center text-xl font-bold bg-emerald-600">
                 Panel Admin
             </div>
             <nav class="flex-">
@@ -75,8 +76,8 @@
             </aside>
  {{-- header Content --}}
 <div class="flex-1 flex flex-col shadow">
-    <header class="bg-white-1500 shadow-md flex items-center justify-between p-4  "> 
-        <h1 class="text-2xl font-bold  px-8 " >Aplikasi Manajemen Data Buku</h1>
+    <header class="bg-emerald-400 shadow-md flex items-center justify-between p-4  "> 
+        <h1 class="text-2xl font-bold text-white px-8 " >Aplikasi Manajemen Data Buku</h1>
         <div class="flex items-center space-x-4">
             <div class="relative group">
                 <button class="flex items-center focus:outline-none ">

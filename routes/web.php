@@ -7,14 +7,13 @@ use App\Http\Controllers\PenerbitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\AuthManualController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [FBukuController::class, 'index'])->name('homepage');
 Route::get('/katalog/{buku}', [FBukuController::class, 'detail_buku'])->name('detail-buku');
 
 
-Route::middleware('auth')->get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {

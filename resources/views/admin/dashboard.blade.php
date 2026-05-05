@@ -1,106 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Aplikasi Manajemen Data Buku</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-emerald-100">
-    <div class="flex h-screen">
-        {{-- Sidebar --}}
-        <aside class="w-64 bg-emerald-700 text-white flex flex-col">
-            <div class="p-4 text-center text-lg font-bold bg-emerald-900">
-                Panel Admin
-            </div>
-            <nav class="flex-">
-                <ul class="space-y-2 p-4">
-                    <li>
-                        <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded
-                             hover:bg-emerald-600">
-                            <span class="material-icons">dashboard</span>
-                            <span class="ml-2">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('kategori.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-emerald-600">
-                            <span class="material-icons">folder</span>
-                            <span class="ml-2">Kategori</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('penerbit.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-emerald-600">
-                            <span class="material-icons">book</span>
-                            <span class="ml-2">Penerbit</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('buku.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-emerald-600">
-                            <span class="material-icons">library_books</span>
-                            <span class="ml-2">Buku</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('anggota.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-emerald-600">
-                            <span class="material-icons">people</span>
-                            <span class="ml-2">Anggota</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('peminjaman.index') }}" class="flex items-center p-2 rounded
-                             hover:bg-emerald-600">
-                            <span class="material-icons">library_books</span>
-                            <span class="ml-2">Peminjaman</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            
-                @if (Auth::check())
-                    <div class="p-4 text-center">
-                         <form action="{{ route('logoutProses') }}" method="post">
-                         @csrf
-                            <button type="submit" 
-                              class="w-full bg-red-600 hover:bg-red-700 text-white py-2 
-                              rounded">Logout</button>
-                        </form>
-                    </div>
-                     @endif
-            </aside>
- {{-- header Content --}}
-<div class="flex-1 flex flex-col shadow">
-    <header class="bg-white-1500 shadow-md flex items-center justify-between p-4  "> 
-        <h1 class="text-2xl font-bold  px-8 " >Aplikasi Manajemen Data Buku</h1>
-        <div class="flex items-center space-x-4">
-            <div class="relative group">
-                <button class="flex items-center focus:outline-none ">
-                     <div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden ring-2 ring-gray-200 group-hover:ring-indigo-400">
-                  <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF" alt="Profil">
-                   </div>
-                    <span class="ml-3 text-gray-700 font-semibold group-hover:text-indigo-600 transition-colors">{{ Auth::user()->name }}</span>
-                        <svg class="w-4 h-4 ml-1 text-gray-400 group-hover:text-indigo-600 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                {{-- Dropdown Menu --}}
-                <div class="absolute right-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-xl transition-all duration-150 ease-in-out opacity-0 translate-y-2 hidden group-hover:block group-hover:opacity-100 group-hover:translate-y-0">
-                    <div class="py-1"> {{-- Beri padding dalam sedikit agar rapi --}}
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150">Profil</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition duration-150 border-b border-gray-100">Pengaturan</a>
-
-                    </div>
-                </div>
-            </div>
+@include('layout.header')
+ <main class="flex-1 p-6 bg-gray-50 overflow-y-auto">
+    {{-- Baris Kartu Statistik --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Kartu Kategori -->
+        <div class="bg-emerald-200 border-2 border-emerald-400 p-6 rounded-xl shadow-sm text-center">
+            <h3 class="text-gray-700 font-bold text-lg">Total Kategori</h3>
+            <p class="text-4xl font-black text-emerald-800">{{ $data['jmlKategori'] }}</p>
         </div>
-    </header>
-    
-    {{-- Main Content Area --}}
-    <main class="flex-1 p-6 bg-gray-50">
-                <main class="flex-1 p-6">
-                    <div class="bg-white rounded-lg shadow p-6 w-full">
+        <!-- Kartu Penerbit -->
+        <div class="bg-red-200 border-2 border-red-400 p-6 rounded-xl shadow-sm text-center">
+            <h3 class="text-gray-700 font-bold text-lg">Total Penerbit</h3>
+            <p class="text-4xl font-black text-red-800">{{ $data['jmlPenerbit'] }}</p>
+        </div>
+        <!-- Kartu Buku -->
+        <div class="bg-blue-200 border-2 border-blue-400 p-6 rounded-xl shadow-sm text-center">
+            <h3 class="text-gray-700 font-bold text-lg">Total Buku</h3>
+            <p class="text-4xl font-black text-blue-800">{{ $data['jmlBuku'] }}</p>
+        </div>
+        <!-- Kartu Anggota -->
+        <div class="bg-yellow-200 border-2 border-yellow-400 p-6 rounded-xl shadow-sm text-center">
+            <h3 class="text-gray-700 font-bold text-lg">Total Anggota</h3>
+            <p class="text-4xl font-black text-yellow-800">{{ $data['jmlAnggota'] }}</p>
+        </div>
+    </div>
+
+    {{-- Section Grafik --}}
+    <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Buku Per Kategori</h3>
+        <div class="h-80">
+            <canvas id="kategoriChart"></canvas>
+        </div>
+    </div>
+
+    {{-- Section Welcome Message --}}
+    <div class="bg-white rounded-xl shadow-md p-6">
+        <h2 class="text-2xl font-bold text-gray-800">Selamat Datang, {{ Auth::user()->name }}!</h2>
+        <p class="text-gray-600 mt-2">Gunakan panel ini untuk mengelola data buku, kategori, dan transaksi perpustakaan Anda dengan mudah.</p>
+    </div>
+</main>
+<script>
+    const ctx = document.getElementById('kategoriChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($kategoriLabels) !!},
+            datasets: [{
+                label: 'Jumlah Buku',
+                data: {!! json_encode($kategoriData) !!},
+                backgroundColor: 'rgba(59, 130, 246, 0.5)', 
+                borderColor: 'rgb(59, 130, 246)',
+                borderWidth: 2,
+                borderRadius: 8, 
+                hoverBackgroundColor: 'rgb(59, 130, 246)'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { precision: 0 }
+                }
+            }
+        }
+    });
+</script>
+@include('layout.footer')

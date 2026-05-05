@@ -12,7 +12,7 @@
     <!-- Card Container -->
     <div class="bg-white shadow-lg rounded-lg px-10 py-10 w-full max-w-md">
         
-        <h1 class="font-bold text-center text-gray-900 mb-8 text-xl">Form Login</h1>
+        <h1 class="font-bold text-center text-gray-900 mb-8 text-xl">Agaily Library</h1>
       {{--}}  @if (session('error'))
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                 {{ session('error') }}
